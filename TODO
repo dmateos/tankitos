@@ -1,0 +1,14 @@
+Smarter network movement (set velocity and let the client update it)
+  - Full movement update (periodic)
+  - Velocity + angle + speed update (on movement)
+Collisions + health
+Environment objects + backgrounds
+Limit bullet rate
+Limit bullet lifetime
+
+Sounds
+Chat
+Mouse move turret?
+Power ups?
+Colors?
+Upgrades?
