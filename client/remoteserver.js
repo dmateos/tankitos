@@ -5,12 +5,12 @@ Tankitos.RemoteServer = function(game, game_data) {
 
   this.socket.on("new_uuid", this.handle_new_uuid.bind(this));
   this.socket.on("player_update", this.handle_player_update.bind(this));
+  this.socket.on("player_quick_update", this.handle_player_quick_update.bind(this));
   this.socket.on("player_fire", this.handle_player_fire.bind(this));
   this.socket.on("player_disconnect", this.handle_player_disconnect.bind(this));
-  this.socket.on("entity_update", this.handle_entity_update.bind(this));
 
-  window.setInterval(this.send_updates.bind(this), 30);
-  window.setInterval(this.send_updates.bind(this, false), 500);
+  //window.setInterval(this.send_updates.bind(this), 30);
+  window.setInterval(this.send_updates.bind(this, false), 5000);
   console.log("remote connection established");
 };
 
@@ -21,7 +21,7 @@ Tankitos.RemoteServer.prototype = {
   },
 
   handle_player_update: function(packet) {
-    player = this.game_data.get_player(packet.uuid);
+    var player = this.game_data.get_player(packet.uuid);
     if(player) {
       player.write_values(packet);
       console.log("player_update update player " + player.uuid);
@@ -36,18 +36,20 @@ Tankitos.RemoteServer.prototype = {
     }
   },
 
+  handle_player_quick_update: function(packet) {
+    var player = this.game_data.get_player(packet.uuid);
+    player.tank.set_speed(packet.speed);
+    player.tank.set_angle(packet.angle);
+  },
+
   handle_player_fire: function(packet) {
     this.handle_player_update(packet);
-    player = this.game_data.get_player(packet.uuid);
+    var player = this.game_data.get_player(packet.uuid);
     player.tank.fire();
   },
 
   handle_player_disconnect: function(packet) {
     this.game_data.delete_player(packet.uuid);
-  },
-
-  handle_entity_update: function(pocket) {
-
   },
 
   send_fire: function() {
@@ -63,5 +65,13 @@ Tankitos.RemoteServer.prototype = {
     else {
       this.socket.emit("player_update", this.game_data.player.get_values());
     }
+  },
+
+  send_quick_update: function(speed, angle) {
+    this.socket.emit("player_quick_update", {
+      uuid: this.game_data.player.uuid,
+      speed: speed,
+      angle: angle,
+    });
   }
 };

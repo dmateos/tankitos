@@ -39,6 +39,11 @@ io.on("connection", function(socket) {
     socket.broadcast.emit("player_update", player);
   });
 
+  socket.on("player_quick_update", function(packet) {
+    console.log(packet);
+    socket.broadcast.emit("player_quick_update", packet);
+  });
+
   socket.on("player_fire", function(packet) {
     player.angle = packet.angle;
     player.x = packet.x;

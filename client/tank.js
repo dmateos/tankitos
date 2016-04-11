@@ -42,6 +42,10 @@ Tankitos.Tank.prototype = {
     this.sprite.y = y;
   },
 
+  set_angle: function(angle) {
+    this.sprite.angle = angle;
+  },
+  
   update_angle: function(angle) {
     this.sprite.angle += angle;
   },

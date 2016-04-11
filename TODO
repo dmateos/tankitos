@@ -1,6 +1,6 @@
-Smarter network movement (set velocity and let the client update it)
-  - Full movement update (periodic)
-  - Velocity + angle + speed update (on movement)
+Smarter network movement (set velocity and let the client update it) (DONE)
+  - Full movement update (periodic) (DONE)
+  - Velocity + angle + speed update (on movement) (DONE)
 Collisions + health
 Environment objects + backgrounds
 Limit bullet rate

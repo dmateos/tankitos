@@ -17,12 +17,15 @@ Tankitos.Player.prototype = {
       if(this.cursors.left.isDown) {
         this.dirty = true;
         this.tank.update_angle(-4);
+        server.send_quick_update(this.tank.current_speed, this.tank.sprite.angle);
       } else if(this.cursors.right.isDown) {
         this.dirty = true;
         this.tank.update_angle(4);
+        server.send_quick_update(this.tank.current_speed, this.tank.sprite.angle);
       } else if(this.cursors.up.isDown) {
         this.dirty = true;
         this.tank.set_speed(300);
+        server.send_quick_update(this.tank.current_speed, this.tank.sprite.angle);
       } else if(this.cursors.space.isDown) {
         this.tank.fire();
         server.send_fire();
