@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title> Tankitos </title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client/phaser.min.js"></script>
+    <script src="client/boot.js"></script>
+    <script src="client/preloader.js"></script>
+    <script src="client/main.js"></script>
+    <script src="client/player.js"></script>
+    <script src="client/bullet.js"></script>
+    <script src="client/tank.js"></script>
+    <script src="client/gamedata.js"></script>
+    <script src="client/remoteserver.js"></script>
+  </head>
+  <body>
+    <div id="gameContainer"> </div>
+      <script type="text/javascript">
+        window.onload = function() {
+        var game = new Phaser.Game(1200, 768, Phaser.AUTO, "gameContainer");
+
+        game.state.add("Boot", Tankitos.Boot);
+        game.state.add("Preloader", Tankitos.Preloader);
+        game.state.add("Main", Tankitos.Main);
+        game.state.start("Boot");
+      };
+    </script>
+  </body>
+</html>
