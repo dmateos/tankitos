@@ -12,7 +12,7 @@ Tankitos.Player = function(game, tank, local = true) {
 };
 
 Tankitos.Player.prototype = {
-  update: function(server) {
+  update: function(game_data, server) {
     if(this.local) {
       if(this.cursors.left.isDown) {
         this.dirty = true;
@@ -31,6 +31,7 @@ Tankitos.Player.prototype = {
         server.send_fire();
       }
     }
+    this.tank.update();
   },
 
   check_dirty: function() {

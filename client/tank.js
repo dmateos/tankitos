@@ -1,7 +1,7 @@
 Tankitos.Tank = function(game, x, y, subresource) {
   this.game = game;
   this.sprite = game.add.sprite(x, y, "tanks", subresource);
-  this.barrel_sprite = game.add.sprite(x-10, y-21.5, "tanks", "barrelGreen_outline.png"); 
+  this.barrel_sprite = game.add.sprite(0, -12, "tanks", "barrelGreen_outline.png"); 
   this.sprite.addChild(this.barrel_sprite);
   this.current_speed = 0;
 
@@ -12,12 +12,13 @@ Tankitos.Tank = function(game, x, y, subresource) {
 
 Tankitos.Tank.prototype = {
   update: function() {
+    this.game.physics.arcade.velocityFromRotation(
+        this.sprite.rotation, 
+        this.current_speed, 
+        this.sprite.body.velocity
+    );
+
     if(this.current_speed > 0) {
-      this.game.physics.arcade.velocityFromRotation(
-          this.sprite.rotation, 
-          this.current_speed, 
-          this.sprite.body.velocity
-      );
       this.current_speed -= 5;
     }
   },

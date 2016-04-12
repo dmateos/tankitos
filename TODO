@@ -1,10 +1,17 @@
 Smarter network movement (set velocity and let the client update it) (DONE)
   - Full movement update (periodic) (DONE)
   - Velocity + angle + speed update (on movement) (DONE)
+Fix float (done)
 Collisions + health
 Environment objects + backgrounds
 Limit bullet rate
 Limit bullet lifetime
+Bullet batches?
+Turrets!
+Stats
+Checksum on server if(uuid = packet.uuid)
+Clean up player update so tank is not independent? ie main (done)
+Scrolling
 
 Sounds
 Chat

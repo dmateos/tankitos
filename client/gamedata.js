@@ -18,5 +18,6 @@ Tankitos.GameData.prototype = {
 
   delete_player: function(uuid) {
     this.players[uuid].destroy();
+    delete this.players[uuid];
   },
 };
