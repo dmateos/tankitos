@@ -1,9 +1,8 @@
 Tankitos.Player = function(game, tank, local = true) {
   this.tank = tank;
   this.local = local;
-  this.game = game;
   this.uuid = "";
-  this.dirty = false;
+  this.events = new Tankitos.EventManager();
 
   if(this.local) {
     this.cursors = game.input.keyboard.createCursorKeys();
@@ -12,56 +11,40 @@ Tankitos.Player = function(game, tank, local = true) {
 };
 
 Tankitos.Player.prototype = {
-  update: function(game_data, server) {
+  update: function(values) {
     if(this.local) {
       if(this.cursors.left.isDown) {
         this.dirty = true;
         this.tank.update_angle(-4);
-        server.send_quick_update(this.tank.current_speed, this.tank.sprite.angle);
+        this.events.notify("position update", this);
       } else if(this.cursors.right.isDown) {
         this.dirty = true;
         this.tank.update_angle(4);
-        server.send_quick_update(this.tank.current_speed, this.tank.sprite.angle);
+        this.events.notify("position update", this);
       } else if(this.cursors.up.isDown) {
         this.dirty = true;
         this.tank.set_speed(300);
-        server.send_quick_update(this.tank.current_speed, this.tank.sprite.angle);
+        this.events.notify("position update", this);
       } else if(this.cursors.space.isDown) {
         this.tank.fire();
-        server.send_fire();
+        this.events.notify("fire", this);
       }
+    } else {
+      if(values && values.angle) { this.tank.set_angle(values.angle); }
+      if(values && values.x) { this.tank.set_x(values.x); }
+      if(values && values.y) { this.tank.set_y(values.y); }
+      if(values && values.speed) { this.tank.set_speed(values.speed); }
     }
     this.tank.update();
   },
 
-  check_dirty: function() {
-    if(this.dirty) {
-      this.dirty = false;
-      return true;
-    }
-    return false;
-  },
-
-  write_values: function(values) {
-    if(values.angle) {
-      this.tank.set_angle(values.angle);
-    }
-
-    if(values.x) {
-      this.tank.set_x(values.x);
-    }
-
-    if(values.y) {
-      this.tank.set_y(values.y);
-    }
-  },
-
   get_values: function() {
     return {
-      angle: this.tank.sprite.angle,
+      angle: this.tank.get_angle(),
       uuid: this.uuid,
-      x: this.tank.sprite.x,
-      y: this.tank.sprite.y,
+      x: this.tank.get_x(),
+      y: this.tank.get_y(),
+      speed: this.tank.get_speed(),
     };
   },
 

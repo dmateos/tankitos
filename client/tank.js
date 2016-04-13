@@ -8,6 +8,7 @@ Tankitos.Tank = function(game, x, y, subresource) {
   game.physics.enable(this.sprite);
   this.sprite.body.collideWorldBounds = true;
   this.sprite.anchor.setTo(0.5, 0.5);
+  this.bullets = [];
 };
 
 Tankitos.Tank.prototype = {
@@ -25,29 +26,47 @@ Tankitos.Tank.prototype = {
 
   fire: function() {
     var bullet = new Tankitos.Bullet(this.game, this.sprite.x, this.sprite.y, this.sprite.angle); 
+    this.bullets.push(bullet.sprite);
   },
 
   set_speed: function(speed) {
     this.current_speed = speed;
+    return this.current_speed;
   },
 
-  set_angle: function(angle) {
-    this.sprite.angle = angle;
+  get_speed: function() {
+    return this.current_speed;
   },
 
   set_x: function(x) {
     this.sprite.x = x;
+    return this.sprite.x;
   },
 
   set_y: function(y) {
     this.sprite.y = y;
+    return this.sprite.y;
+  },
+
+  get_x: function() {
+    return this.sprite.x;
+  },
+
+  get_y: function() {
+    return this.sprite.y;
   },
 
   set_angle: function(angle) {
     this.sprite.angle = angle;
+    return this.sprite.angle;
   },
   
   update_angle: function(angle) {
     this.sprite.angle += angle;
+    return this.sprite.angle;
+  },
+
+  get_angle: function(angle) {
+    return this.sprite.angle;
   },
 };

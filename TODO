@@ -1,6 +1,7 @@
 Smarter network movement (set velocity and let the client update it) (DONE)
   - Full movement update (periodic) (DONE)
   - Velocity + angle + speed update (on movement) (DONE)
+Player dep on server and game_data...
 Fix float (done)
 Collisions + health
 Environment objects + backgrounds

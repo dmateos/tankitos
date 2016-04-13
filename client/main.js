@@ -6,27 +6,22 @@ Tankitos.Main = function(game) {
 Tankitos.Main.prototype = {
   create: function() {
     var num = Math.floor(Math.random() * (100 - 0 +1)) + 0;
+
     this.game.stage.backgroundColor = "#4d2600";
     this.game_data = new Tankitos.GameData();
-    this.game_data.tank = new Tankitos.Tank(this.game, num, num,"tankGreen_outline.png");
-    this.game_data.player = new Tankitos.Player(this.game, this.game_data.tank);
+
+    var tank = new Tankitos.Tank(this.game, num, num,"tankGreen_outline.png");
+    this.game_data.player = new Tankitos.Player(this.game, tank);
+    this.game_data.add_player(this.game_data.player);
+
     this.remote_server = new Tankitos.RemoteServer(this.game, this.game_data);
   },
 
   update: function() {
-    this.game_data.player.update(this.game_data, this.remote_server);
-
     self = this;
-    var player = this.game_data.player;
-
-    Object.keys(this.game_data.players).forEach(function(key) {
-      var p = self.game_data.players[key];
-      p.update(self.game_data, self.remote_server);
-      self.game.physics.arcade.collide(self.game_data.tank.sprite, p.tank.sprite);
+    this.game_data.each_player(function(player) {
+      player.update();
+      self.game.physics.arcade.collide(player.tank.sprite, self.game_data.get_player_sprites());
     });
   },
-
-  check_collisions: function(target, group) {
-
-  }
 };
