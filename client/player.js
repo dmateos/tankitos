@@ -14,15 +14,12 @@ Tankitos.Player.prototype = {
   update: function(values) {
     if(this.local) {
       if(this.cursors.left.isDown) {
-        this.dirty = true;
         this.tank.update_angle(-4);
         this.events.notify("position update", this);
       } else if(this.cursors.right.isDown) {
-        this.dirty = true;
         this.tank.update_angle(4);
         this.events.notify("position update", this);
       } else if(this.cursors.up.isDown) {
-        this.dirty = true;
         this.tank.set_speed(300);
         this.events.notify("position update", this);
       } else if(this.cursors.space.isDown) {
