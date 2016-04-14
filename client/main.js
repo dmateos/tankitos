@@ -23,7 +23,9 @@ Tankitos.Main.prototype = {
       player.update();
       self.game.physics.arcade.collide(player.tank.sprite, self.game_data.get_player_sprites());
       self.game.physics.arcade.collide(player.tank.sprite, self.game_data.get_bullets_sprites(), function(obj1, obj2) {
-        console.log("bullet nigga");  
+        var emitter = self.game.add.emitter(obj1.x, obj1.y, 100);
+        emitter.makeParticles("tanks", "smokeWhite1.png");
+        emitter.start(true, 200, null, 3);
       });
     });
   },
