@@ -1,5 +1,6 @@
 var GameData = function() {
   this.players = {};
+  this.entities = [];
 };
 
 GameData.prototype = {
@@ -13,6 +14,14 @@ GameData.prototype = {
 
   delete_player: function(socket) {
     delete this.players[socket.id];
+  },
+
+  each_player: function(func) {
+    self = this;
+    Object.keys(this.players).forEach(function(key) {
+      var p = self.players[key];
+      func.call(self, p);
+    });
   }
 };
 

@@ -30,9 +30,13 @@ Tankitos.Player.prototype = {
       if(values && values.angle) { this.tank.set_angle(values.angle); }
       if(values && values.x) { this.tank.set_x(values.x); }
       if(values && values.y) { this.tank.set_y(values.y); }
-      if(values && values.speed) { this.tank.set_speed(values.speed); }
     }
     this.tank.update();
+  },
+
+  quick_update: function(values) {
+      if(values && values.speed) { this.tank.set_speed(values.speed); }
+      if(values && values.angle) { this.tank.set_angle(values.angle); }
   },
 
   get_values: function() {

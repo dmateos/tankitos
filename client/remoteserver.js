@@ -35,7 +35,7 @@ Tankitos.RemoteServer.prototype = {
 
   handle_player_quick_update: function(packet) {
     var player = this.game_data.get_player(packet.uuid);
-    player.update(packet);
+    player.quick_update(packet);
   },
 
   handle_player_fire: function(packet) {

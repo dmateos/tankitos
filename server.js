@@ -4,7 +4,10 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var players = require("./player.js");
 var gd = require("./gamedata.js");
+var readline = require("readline");
 
+
+var rl = readline.createInterface(process.stdin, process.stdout);
 var gd = new gd.GameData();
 
 app.use('/client', express.static(__dirname + '/client'));
@@ -22,8 +25,7 @@ io.on("connection", function(socket) {
   socket.broadcast.emit("player_update", player);
   console.log("player_update of " + player.uuid + " to all");
 
-  Object.keys(gd.get_players()).forEach(function(key) {
-    var p = gd.get_players()[key];
+  gd.each_player(function(p) {
     console.log("player_update of " + p.uuid + " to " + player.uuid);
     socket.emit("player_update", p); 
   });
@@ -32,9 +34,7 @@ io.on("connection", function(socket) {
 
   socket.on("player_update", function(packet) {
     console.log(packet);
-    player.angle = packet.angle;
-    player.x = packet.x;
-    player.y = packet.y;
+    player.update(packet);
     console.log("player_update of " + player.uuid + " to all");
     socket.broadcast.emit("player_update", player);
   });
@@ -45,9 +45,7 @@ io.on("connection", function(socket) {
   });
 
   socket.on("player_fire", function(packet) {
-    player.angle = packet.angle;
-    player.x = packet.x;
-    player.y = packet.y;
+    player.update(packet);
     console.log("player_fire of " + player.uuid + " to all");
     socket.broadcast.emit("player_fire", player);
   });
@@ -60,9 +58,16 @@ io.on("connection", function(socket) {
 });
 
 setInterval(function() {
- console.log(Object.keys(gd.get_players()).length + " connected players"); 
+ //console.log(Object.keys(gd.get_players()).length + " connected players"); 
 }, 1000);
 
 http.listen(3000, function() {
   console.log("listening on 3000");
+});
+
+rl.setPrompt(">");
+rl.prompt()
+rl.on("line", function(line) {
+  console.log(line.trim());
+  rl.prompt()
 });
