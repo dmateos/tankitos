@@ -7,6 +7,8 @@ Tankitos.Main.prototype = {
   create: function() {
     var num = Math.floor(Math.random() * (100 - 0 +1)) + 0;
 
+    this.game.world.setBounds(0, 0, 3500, 3500);
+    this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     this.game.stage.backgroundColor = "#4d2600";
     this.game_data = new Tankitos.GameData();
 
@@ -26,6 +28,17 @@ Tankitos.Main.prototype = {
         var emitter = self.game.add.emitter(obj1.x, obj1.y, 100);
         emitter.makeParticles("tanks", "smokeWhite1.png");
         emitter.start(true, 200, null, 3);
+        //obj1.damage(1);
+        obj2.destroy();
+
+        /*
+        if(obj1.health == 0 && obj1 == self.game_data.player.tank.sprite) {
+          var tank = new Tankitos.Tank(self.game, 0, 0,"tankGreen_outline.png");
+          self.game_data.player = new Tankitos.Player(self.game, tank);
+          self.game_data.add_player(self.game_data.player);
+          delete self.game_data.get_player(obj2.uuid);
+        }
+        */
       });
     });
   },

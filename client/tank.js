@@ -1,5 +1,6 @@
 Tankitos.Tank = function(game, x, y, subresource) {
   this.game = game;
+
   this.sprite = game.add.sprite(x, y, "tanks", subresource);
   this.barrel_sprite = game.add.sprite(0, -12, "tanks", "barrelGreen_outline.png"); 
   this.sprite.addChild(this.barrel_sprite);

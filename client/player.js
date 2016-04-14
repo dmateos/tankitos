@@ -3,6 +3,7 @@ Tankitos.Player = function(game, tank, local = true) {
   this.local = local;
   this.uuid = "";
   this.events = new Tankitos.EventManager();
+  this.health = 1000;
 
   if(this.local) {
     this.cursors = game.input.keyboard.createCursorKeys();

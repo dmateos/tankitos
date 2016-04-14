@@ -5,13 +5,13 @@ Fix float (done)
 Client fast update should ignore x/y even if server sends it. (done)
 
 Collisions + health (collisions done)
+Limit bullet lifetime (half done, must clean up.) 
 
 Player dep on server and game_data...
 Environment objects + backgrounds
   - stored on server
   - added via server
 Limit bullet rate
-Limit bullet lifetime
 Bullet batches?
 Turrets!
 Stats
