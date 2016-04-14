@@ -2,7 +2,7 @@
 
 "barrelGreen_outline.png":
 {
-	"frame": {"x":282,"y":216,"w":58,"h":24},
+	"frame": {"x":291,"y":215,"w":58,"h":24},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":58,"h":24},
@@ -11,7 +11,7 @@
 },
 "bulletBeige_outline.png":
 {
-	"frame": {"x":193,"y":220,"w":34,"h":20},
+	"frame": {"x":101,"y":229,"w":34,"h":20},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":20},
@@ -36,6 +36,15 @@
 	"sourceSize": {"w":128,"h":128},
 	"pivot": {"x":0.5,"y":0.5}
 },
+"oil.png":
+{
+	"frame": {"x":101,"y":131,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96},
+	"pivot": {"x":0.5,"y":0.5}
+},
 "sand.png":
 {
 	"frame": {"x":261,"y":1,"w":128,"h":128},
@@ -45,22 +54,58 @@
 	"sourceSize": {"w":128,"h":128},
 	"pivot": {"x":0.5,"y":0.5}
 },
+"sandbagBrown.png":
+{
+	"frame": {"x":391,"y":77,"w":66,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":44},
+	"sourceSize": {"w":66,"h":44},
+	"pivot": {"x":0.5,"y":0.5}
+},
 "smokeWhite1.png":
 {
-	"frame": {"x":101,"y":131,"w":90,"h":99},
+	"frame": {"x":199,"y":131,"w":90,"h":99},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":99},
 	"sourceSize": {"w":90,"h":99},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tankGreen_outline.png":
+"tankBlue_outline.png":
 {
-	"frame": {"x":282,"y":131,"w":78,"h":83},
+	"frame": {"x":397,"y":166,"w":78,"h":83},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":83},
 	"sourceSize": {"w":78,"h":83},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"tankGreen_outline.png":
+{
+	"frame": {"x":477,"y":166,"w":78,"h":83},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":83},
+	"sourceSize": {"w":78,"h":83},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"tracksLarge.png":
+{
+	"frame": {"x":291,"y":131,"w":104,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":82},
+	"sourceSize": {"w":104,"h":82},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"tracksSmall.png":
+{
+	"frame": {"x":391,"y":1,"w":104,"h":74},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":74},
+	"sourceSize": {"w":104,"h":74},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "treeLarge.png":
@@ -74,7 +119,7 @@
 },
 "treeSmall.png":
 {
-	"frame": {"x":193,"y":131,"w":87,"h":87},
+	"frame": {"x":459,"y":77,"w":87,"h":87},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":87,"h":87},
@@ -86,8 +131,8 @@
 	"version": "1.0",
 	"image": "tanks.png",
 	"format": "RGBA8888",
-	"size": {"w":390,"h":241},
+	"size": {"w":556,"h":250},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:aaa7e825b338fe9cea7c7eb5ea909350:74e80ce9e33b7d409d8ce26dbdeb9098:e3ee765dcb86c37cc90e57d93acf6013$"
+	"smartupdate": "$TexturePacker:SmartUpdate:4e034cd10098eec442c01dce4dc45bad:4d20e7425bb03d7feaacc62c0e693621:e3ee765dcb86c37cc90e57d93acf6013$"
 }
 }
