@@ -22,6 +22,7 @@ Tankitos.Main.prototype = {
     this.game_data.each_player(function(player) {
       player.update();
       self.game.physics.arcade.collide(player.tank.sprite, self.game_data.get_player_sprites());
+      self.game.physics.arcade.collide(player.tank.sprite, self.game_data.get_bullets_sprites());
     });
   },
 };

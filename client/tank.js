@@ -26,7 +26,7 @@ Tankitos.Tank.prototype = {
 
   fire: function() {
     var bullet = new Tankitos.Bullet(this.game, this.sprite.x, this.sprite.y, this.sprite.angle); 
-    this.bullets.push(bullet.sprite);
+    this.bullets.push(bullet);
   },
 
   set_speed: function(speed) {

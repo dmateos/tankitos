@@ -17,7 +17,7 @@ Tankitos.GameData.prototype = {
 
   get_player_sprites: function() {
     var self = this;
-    Object.keys(this.players).map(function(key) {
+    return Object.keys(this.players).map(function(key) {
       return self.players[key].tank.sprite;
     });
   },
@@ -32,11 +32,13 @@ Tankitos.GameData.prototype = {
 
   get_bullets_sprites: function() {
     var self = this;
-    Object.keys(this.players).map(function(key) {
-      self.players[key].tank.bullets.map(function(b) {
-        return 
+    var sprites = [];
+    this.each_player(function(p) {
+      p.tank.bullets.forEach(function(b) {
+        sprites.push(b.sprite);
       });
     });
+    return sprites;
   },
 
   add_player: function(player) {
