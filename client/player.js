@@ -8,6 +8,7 @@ Tankitos.Player = function(game, tank, local = true) {
   if(this.local) {
     this.cursors = game.input.keyboard.createCursorKeys();
     this.cursors.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.cursors.space.onDown.add(this.on_fire, this);
   }
 };
 
@@ -23,9 +24,6 @@ Tankitos.Player.prototype = {
       } else if(this.cursors.up.isDown) {
         this.tank.set_speed(300);
         this.events.notify("position update", this);
-      } else if(this.cursors.space.isDown) {
-        this.tank.fire();
-        this.events.notify("fire", this);
       }
     } else {
       if(values && values.angle) { this.tank.set_angle(values.angle); }
@@ -33,6 +31,11 @@ Tankitos.Player.prototype = {
       if(values && values.y) { this.tank.set_y(values.y); }
     }
     this.tank.update();
+  },
+
+  on_fire: function(p) {
+    this.tank.fire();
+    this.events.notify("fire", this);
   },
 
   quick_update: function(values) {

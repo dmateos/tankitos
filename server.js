@@ -68,6 +68,13 @@ http.listen(3000, function() {
 rl.setPrompt(">");
 rl.prompt()
 rl.on("line", function(line) {
+  var command = line.trim().split(" ");
+  switch(command[0]) {
+    case "entity":
+      io.emit("new_entity", { x: command[1], y: command[2] });
+      console.log("sent entity");
+      break;
+  }
   console.log(line.trim());
   rl.prompt()
 });

@@ -8,6 +8,7 @@ Tankitos.RemoteServer = function(game, game_data) {
   this.socket.on("player_quick_update", this.handle_player_quick_update.bind(this));
   this.socket.on("player_fire", this.handle_player_fire.bind(this));
   this.socket.on("player_disconnect", this.handle_player_disconnect.bind(this));
+  this.socket.on("new_entity", this.handle_new_entity.bind(this));
 
   this.game_data.player.events.on("position update", this.send_quick_update.bind(this, this.game_data.player));
   this.game_data.player.events.on("fire", this.send_fire.bind(this));
@@ -46,6 +47,11 @@ Tankitos.RemoteServer.prototype = {
 
   handle_player_disconnect: function(packet) {
     this.game_data.delete_player(packet.uuid);
+  },
+
+  handle_new_entity: function(packet) {
+    var sprite = this.game.add.sprite(packet.x, packet.y, "tanks", "treeSmall.png");
+    game.physics.enable(sprite);
   },
 
   send_fire: function() {

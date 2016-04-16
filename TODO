@@ -3,15 +3,16 @@ Smarter network movement (set velocity and let the client update it) (DONE)
   - Velocity + angle + speed update (on movement) (DONE)
 Fix float (done)
 Client fast update should ignore x/y even if server sends it. (done)
+Limit bullet rate (done)
 
-Collisions + health (collisions done)
 Limit bullet lifetime (half done, must clean up.) 
+Collisions + health (collisions done)
 
-Player dep on server and game_data...
-Environment objects + backgrounds
+Environment objects + backgrounds (basics done)
   - stored on server
   - added via server
-Limit bullet rate
+
+Player dep on server and game_data...
 Bullet batches?
 Turrets!
 Stats
